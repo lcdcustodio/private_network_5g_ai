@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-priv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-priv
+  template:
+    metadata:
+      labels:
+        app: flask-priv
+    spec:
+      containers:
+      - name: priv-net
+        image: quay.io/ldornele/priv_net_app_2:latest
+        ports:
+        - containerPort: 5000
+      imagePullPolicy: Never

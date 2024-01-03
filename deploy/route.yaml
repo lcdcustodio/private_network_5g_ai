@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: priv-net-use-cases
+spec:
+  to:
+    kind: Service
+    name: flask-priv-service
+    weight: 100
+  port:
+    targetPort: 5000
+  tls:
+    termination: edge
